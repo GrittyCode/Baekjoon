@@ -23,23 +23,20 @@ bool LuckyStraight(int N)
 	//자리수 별 값을 더해줄 변수들
 
 
-	
-	int B_cnt = cnt / 2; // 
-	int A_cnt = cnt - B_cnt; //첫번째 ~ n/2
-
-
-	for (int i = 0; i < A_cnt; ++i) //첫번째부터 ~ n / 2
+	for (int i = 1; i <= cnt; ++i)
 	{
-		temp = N % 10; //자리값 별로 나머지 연산을 통해 1~9값을 구해준다.
-		sum_B += temp; //자리값 별로 더해준다. 
-		N /= 10;
-	}
-
-	for (int i = 0; i < B_cnt; ++i)// (n / 2) + 1 ~ n번째까지
-	{
-		temp = N % 10;
-		sum_A += temp;
-		N /= 10;
+		if (i > cnt / 2) //반을 넘었을 때
+		{
+			temp = N % 10;
+			sum_B += temp;
+			N /= 10;
+		}
+		else //반이 안넘었을 때
+		{
+			temp = N % 10;
+			sum_A += temp;
+			N /= 10;
+		}
 	}
 
 	if (sum_A == sum_B) return true;
